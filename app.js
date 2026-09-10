@@ -18,7 +18,6 @@ const TIME_SLOTS = [
   '20:00–22:00',
   '22:00–24:00'
 ];
-const ACTIVITY_HINTS = ['起床、吃早餐', '上课、处理一件事', '午饭、晒晒太阳', '见一个人、完成一步', '散步、运动一下', '晚饭、看看剧', '阅读、聊聊天', '洗澡、早点睡'];
 
 const $ = id => document.getElementById(id);
 const key = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -168,7 +167,6 @@ function renderSchedule(ds) {
       input.rows = 2;
       input.maxLength = 80;
       input.value = values[rowIndex][colIndex];
-      input.placeholder = colIndex === 0 ? ACTIVITY_HINTS[rowIndex] : '';
       input.setAttribute('aria-label', `${WEEKDAYS[colIndex]} ${slot} 的活动`);
       input.addEventListener('input', () => saveActivity(weekId, rowIndex, colIndex, input.value));
       td.append(input);
