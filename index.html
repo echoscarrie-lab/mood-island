@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff9abe">
+  <title>心情小岛 · Mood Island</title>
+  <meta name="description" content="用可爱的小团子记下一周心情，也给这一周安排一点小事情。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <span class="brand">MOOD ISLAND ✳</span>
+      <button id="share">分享小岛 ↗</button>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">给每一种心情，一个位置</p>
+        <h1>这一周，<br>你是什么味道？</h1>
+        <p>选一天，放下你的心情小团子。</p>
+      </div>
+      <img class="stickers" src="moods.png" alt="六只不同心情的彩色小团子">
+    </section>
+
+    <section class="board">
+      <div class="weekbar">
+        <button id="prev" aria-label="上一周">←</button>
+        <div>
+          <h2 id="range"></h2>
+          <button id="thisweek" class="text">回到本周</button>
+        </div>
+        <button id="next" aria-label="下一周">→</button>
+      </div>
+      <div id="days" class="days"></div>
+      <div class="bottom">
+        <span id="summary">还没记录也没关系，从今天开始。</span>
+        <span>一周七天，不必每天晴天 ☁</span>
+      </div>
+    </section>
+
+    <section class="editor">
+      <div class="editorhead">
+        <h2 id="selected"></h2>
+        <span>可以选不止一种</span>
+      </div>
+      <div id="moods" class="moods"></div>
+      <label for="note">今天想留下一句什么？ <span>可不填</span></label>
+      <textarea id="note" maxlength="160" placeholder="比如：什么也没干，但猫在我旁边睡了一下午。"></textarea>
+      <div class="actions">
+        <span id="status" role="status" aria-live="polite"></span>
+        <button id="save" class="primary">把今天收好 ♥</button>
+      </div>
+    </section>
+
+    <section class="schedule" aria-labelledby="schedule-title">
+      <div class="schedule-intro">
+        <div>
+          <p class="eyebrow">ACTIVITY PICNIC ✿</p>
+          <h2 id="schedule-title">给这一周，摆一点小事情</h2>
+          <p>不用把格子填满。喜欢的、该做的、能见到人的、让身体动一动的，都算。</p>
+        </div>
+        <div class="activity-kinds" aria-label="活动灵感">
+          <span class="kind kind-fun">🍬 小乐趣</span>
+          <span class="kind kind-win">⭐ 成就感</span>
+          <span class="kind kind-social">🌼 和人连接</span>
+          <span class="kind kind-move">🐾 动一动</span>
+        </div>
+      </div>
+      <div class="schedule-scroll" tabindex="0" aria-label="每周活动安排表，可横向滚动">
+        <table class="activity-table">
+          <thead id="activity-head"></thead>
+          <tbody id="activity-body"></tbody>
+        </table>
+      </div>
+      <div class="schedule-foot">
+        <span id="schedule-status" role="status" aria-live="polite">内容会自动保存在当前浏览器。</span>
+        <span>先放一件容易做到的小事，也很好。</span>
+      </div>
+    </section>
+
+    <section class="export">
+      <div>
+        <h2>带走这一周</h2>
+        <p>把七天的小情绪，装进一张卡片。</p>
+      </div>
+      <div>
+        <label class="check"><input type="checkbox" id="include"> 分享卡包含小记</label>
+        <button id="download" class="primary">生成心情卡 ↓</button>
+      </div>
+    </section>
+
+    <footer>只保存在当前浏览器 · 不用打分，也不用表现得很好。</footer>
+  </main>
+
+  <dialog id="carddialog">
+    <button class="close" id="close" aria-label="关闭">×</button>
+    <h2>这是你的这一周 🍬</h2>
+    <img id="cardimage" alt="本周心情分享卡">
+    <p>手机上也可以长按图片保存。</p>
+    <a id="cardlink" download="我的一周心情.png" class="primary">下载图片</a>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
